@@ -46,6 +46,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
+  const [dropY, setDropY] = useState(12);
   const [isSmall, setIsSmall] = useState(() =>
     typeof window !== 'undefined' && window.innerWidth < 1024
   );
@@ -72,7 +73,31 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+  let y = 12;
+
+  const fall = setInterval(() => {
+    y -= 0.4;
+
+    if (y <= 4) {
+      y = 4;
+      clearInterval(fall);
+    }
+
+    setDropY(y);
+  }, 16);
+
+  return () => clearInterval(fall);
+}, []);
+
   useFrame((state, delta) => {
+     if (fixed.current) {
+    fixed.current.setNextKinematicTranslation({
+      x: 0,
+      y: dropY,
+      z: 0,
+    });
+  }
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
@@ -103,7 +128,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   return (
     <>
       <group position={[0, 4, 0]}>
-        <RigidBody ref={fixed} {...segmentProps} type="fixed" />
+        <RigidBody ref={fixed} {...segmentProps} type="kinematicPosition" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
         </RigidBody>

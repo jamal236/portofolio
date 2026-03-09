@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import ShinyText from "./components/ShinyText/ShinyText";
 import BlurText from "./components/BlurText/BlurText";
@@ -13,12 +14,27 @@ import Aurora from "./components/Aurora/Aurora";
 import AOS from 'aos';
 import ChatRoom from "./components/ChatRoom";
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Certificates from "./components/Certificates";
 // ..
-AOS.init();
+
 
 function App() {
+  useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+}, []);
   const aboutRef = useRef(null);
+  const [startAnim, setStartAnim] = useState(false)
   const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    setStartAnim(true)
+  }, 5500)
+
+  return () => clearTimeout(timer)
+}, [])
 
   const [selectedProject, setSelectedProject] = useState(null); // null = modal tertutup
 
@@ -62,9 +78,9 @@ function App() {
 
   return (
     <>
-      <div className="absolute top-0 left-0 w-full h-full -z-10 ">
+      <div className="fixed top-0 left-0 w-full h-full -z-10">
         <Aurora
-          colorStops={["#577870", "#1F97A6", "#127B99"]}
+          colorStops={["#2563eb", "#7c3aed", "#ec4899"]}
           blend={0.5}
           amplitude={1.0}
           speed={0.5}
@@ -72,42 +88,87 @@ function App() {
       </div>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-6 grid-cols-1">
-          <div className="animate__animated animate__fadeInUp animate__delay-3s">
+        <motion.div
+  className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-6 grid-cols-1"
+  initial={{ opacity: 0 }}
+  animate={startAnim ? { opacity: 1 } : {}}
+  transition={{ duration: 1 }}
+>
+  
+  
+          <motion.div
+  initial={{ opacity: 0, x: 80 }}
+    animate={
+    startAnim
+      ? { opacity: 1, x: 0, y: [0, -10, 0] }
+      : {}
+  }
+  transition={{
+    duration: 1.2,
+    y: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }}
+>
             <div className="flex items-center gap-3 mb-6 bg bg-zinc-800 w-fit p-4 rounded-2xl">
               <img src="./assets/faris1.png" className="w-10 rounded-md" />
-              <q>Avoid or just undertake it</q>
+              <q>Keep building. Keep improving</q>
             </div>
-            <h1 className="text-5xl font-bold mb-6">
-              <ShinyText text="Hi I'm Faris Edrik Prayoga" disabled={false} speed={3} className='custom-class' />
+                       <h1 className="text-5xl font-bold mb-6">
+              <ShinyText text="Hi I'm jamalul husnil mubaraq" disabled={false} speed={3} className='custom-class' />
             </h1>
-            <BlurText
-              text="A passionate application and web developer dedicated to crafting modern, high-performance digital experiences through innovative and user-friendly solutions."
-              delay={150}
-              animateBy="words"
-              direction="top"
-              className=" mb-6"
-            />
+{startAnim && (
+  <BlurText
+    text="A highly motivated application and web developer committed to delivering modern, high-performance digital experiences by combining innovation, efficiency, and user-centered design."
+    delay={100}
+    animateBy="words"
+    direction="top"
+    className="mb-6"
+  />
+)}
             <div className="flex items-center sm:gap-4 gap-2">
               <a 
                 href="./assets/CV.pdf" 
-                download="Faris_Edrik_Prayoga_CV.pdf" 
+                download="JamalulHusnilCV.pdf" 
                 className="font-semibold bg-[#1a1a1a] p-4 px-6 rounded-full border border-gray-700 hover:bg-[#222] transition-colors"
               >
                 <ShinyText text="Download CV" disabled={false} speed={3} className="custom-class" />
               </a>
+              
 
               <a href="#project" className="font-semibold bg-[#1a1a1a] p-4 px-6 rounded-full border border-gray-700 hover:bg-[#222] transition-colors">
                 <ShinyText text="Explore My Projects" disabled={false} speed={3} className="custom-class" />
               </a>
+<a href="#certificates" className="font-semibold bg-[#1a1a1a] p-4 px-6 rounded-full border border-gray-700 hover:bg-[#222] transition-colors">
+  <ShinyText text="My Certificates" disabled={false} speed={3} className="custom-class" />
+</a>
             </div>
 
-          </div>
-          <div className="md:ml-auto animate__animated animate__fadeInUp animate__delay-4s">
-            <ProfileCard
-              name="Faris Edrik P"
-              title="Web Developer"
-              handle="farisedrikp"
+          </motion.div>
+          <motion.div
+  className="md:ml-auto"
+  initial={{ opacity: 0, x: 120, scale: 0.9 }}
+  animate={
+  startAnim
+    ? { opacity: 1, x: 0, scale: 1, y: [0, -15, 0] }
+    : {}
+}
+  transition={{
+    duration: 1.5,
+    delay: 0.6,
+    ease: "easeOut",
+    y: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }}
+>          <ProfileCard
+              name=""
+              title=""
+              handle="JamalulHusnil"
               status="Online"
               contactText="Contact Me"
               avatarUrl="./assets/faris.png"
@@ -116,12 +177,12 @@ function App() {
               enableMobileTilt={false}
               onContactClick={() => console.log('Contact clicked')}
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         {/* tentang */}
-        <div className="mt-15 mx-auto w-full max-w-[1600px] rounded-3xl border-[5px] border-violet-500/40 shadow-[0_0_30px_rgba(168,85,247,0.4)] bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#1a1a1a] p-6" id="about">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10 pt-0 px-8" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-            <div className="basis-full md:basis-7/12 pr-0 md:pr-8 border-b md:border-b-0 md:border-r border-violet-500/30">
+        <div className="mt-15 mx-auto w-full max-w-[1600px] rounded-3xl border-[5px] border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.35)] bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#1a1a1a] p-6" id="about">
+          <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-10 pt-0 px-8">
+            <div className="basis-full md:basis-7/12 pr-0 md:pr-8 md:pl-8 border-b md:border-b-0 md:border-l border-violet-500/30">
               {/* Kolom kiri */}
               <div className="flex-1 text-left">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
@@ -129,29 +190,30 @@ function App() {
                 </h2>
 
                 <BlurText
-                  text="I’m Faris Edrik Prayoga, a full-stack developer passionate about building modern, high-performance applications with an intuitive user experience. I enjoy working with the latest technologies like Artificial Intelligence, Machine Learning, and cloud-based development, blending creativity with precision to deliver impactful solutions. With over three years of experience and more than 20 completed projects, I’m committed to helping users and businesses grow in the digital era through functional, aesthetic, and scalable digital products."
-                  delay={150}
+                  text="I’m Jamalul Husnil Mubaraq,
+I'm an Informatics Engineering student specializing in front-end development. I'm focused on creating engaging digital experiences and always strive to deliver the best solutions in every project I work on."
+                  delay={130}
                   animateBy="words"
                   direction="top"
                   className="text-base md:text-lg leading-relaxed mb-10 text-gray-300"
                 />
 
                 <div className="flex flex-col sm:flex-row items-center sm:justify-between text-center sm:text-left gap-y-8 sm:gap-y-0 mb-4 w-full">
-                  <div>
+                  <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-once="true">
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      20<span className="text-violet-500">+</span>
+                      10<span className="text-violet-500">+</span>
                     </h1>
                     <p>Project Finished</p>
                   </div>
-                  <div>
+                  <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-once="true">
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      3<span className="text-violet-500">+</span>
+                      2<span className="text-violet-500">+</span>
                     </h1>
                     <p>Years of Experience</p>
                   </div>
                   <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-once="true">
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      3.81<span className="text-violet-500">/4.00</span>
+                      3.98<span className="text-violet-500">/4.00</span>
                     </h1>
                     <p>GPA</p>
                   </div>
@@ -206,6 +268,9 @@ function App() {
         </div>
         {/* tentang */}
 
+        {/* Certificates */}
+<Certificates />
+
         {/* Proyek */}
         <div className="proyek mt-32 py-10" id="project" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"></div>
         <h1 className="text-center text-4xl font-bold mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Project</h1>
@@ -256,7 +321,7 @@ function App() {
             {/* Contact Form di kanan */}
             <div className="flex-1">
               <form
-                action="https://formsubmit.co/rissoppa21@gmail.com"
+                action="https://formsubmit.co/husnil050123@gmail.com"
                 method="POST"
                 className="bg-zinc-800 p-10 w-full rounded-md"
                 autoComplete="off"

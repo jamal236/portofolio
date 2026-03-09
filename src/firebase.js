@@ -4,15 +4,14 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: ",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyD7wzzlTkX1neVFGrwme2CQI1bi9UQ1rcs",
+  authDomain: "portfolio-react-vite-e8ae4.firebaseapp.com",
+  projectId: "portfolio-react-vite-e8ae4",
+  storageBucket: "portfolio-react-vite-e8ae4.firebasestorage.app",
+  messagingSenderId: "990329480596",
+  appId: "1:990329480596:web:42c46fe2e6a663e83c5b81",
 };
 
-// Init Firebase
 const app = initializeApp(firebaseConfig);
 
 // Auth

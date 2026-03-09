@@ -32,10 +32,35 @@ const Navbar = ({ hidden = false }) => {
           transition-all md:transition-none
           ${active ? "top-0 opacity-100" : "-top-10 opacity-0"}`}
       >
-        <li><a href="#home" className="sm:text-lg text-base font-medium">Home</a></li>
-        <li><a href="#about" className="sm:text-lg text-base font-medium">About</a></li>
-        <li><a href="#project" className="sm:text-lg text-base font-medium">Project</a></li>
-        <li><a href="#contact" className="sm:text-lg text-base font-medium">Contact</a></li>
+<li>
+  <a href="#home" className="sm:text-lg text-base font-medium relative transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-lg after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+    Home
+  </a>
+</li>
+
+<li>
+  <a href="#about" className="sm:text-lg text-base font-medium relative transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-lg after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+    About
+  </a>
+</li>
+
+<li>
+  <a href="#project" className="sm:text-lg text-base font-medium relative transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-lg after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+    Project
+  </a>
+</li>
+
+<li>
+  <a href="#certificates" className="sm:text-lg text-base font-medium relative transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-lg after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+    Certificates
+  </a>
+</li>
+
+<li>
+  <a href="#contact" className="sm:text-lg text-base font-medium relative transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-lg after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+    Contact
+  </a>
+</li>
       </ul>
     </nav>
   );
