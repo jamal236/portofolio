@@ -71,12 +71,10 @@ export default function ChatRoom() {
         <div className="flex justify-between items-center mb-4 border-b border-gray-700 pb-3">
           <div className="flex items-center gap-3">
 <img
-  src={user.photoURL ? user.photoURL.replace("=s96-c","=s200-c") : `https://ui-avatars.com/api/?name=${user.displayName}`}
+  src={user?.photoURL || `https://ui-avatars.com/api/?name=${user?.displayName}`}
   alt="avatar"
   className="w-10 h-10 rounded-full"
-  onError={(e)=>{
-    e.target.src=`https://ui-avatars.com/api/?name=${user.displayName}`
-  }}
+  referrerPolicy="no-referrer"
 />
             <span className="text-white font-semibold">
               {user.displayName}
@@ -105,11 +103,11 @@ export default function ChatRoom() {
 
             {msg.uid !== user?.uid && (
 <img
-  src={msg.photoURL ? msg.photoURL.replace("=s96-c","=s200-c") : `https://ui-avatars.com/api/?name=${msg.displayName}`}
+  src={msg?.photoURL ? msg.photoURL : `https://ui-avatars.com/api/?name=${msg?.displayName}`}
   alt="avatar"
-  className="w-10 h-10 rounded-full"
+  className="w-10 h-10 rounded-full object-cover"
+  referrerPolicy="no-referrer"
 />
-
             )}
 
             <div
@@ -128,12 +126,10 @@ export default function ChatRoom() {
 
             {msg.uid === user?.uid && (
 <img
-  src={user.photoURL ? user.photoURL.replace("=s96-c","=s200-c") : `https://ui-avatars.com/api/?name=${user.displayName}`}
+  src={msg?.photoURL ? msg.photoURL : `https://ui-avatars.com/api/?name=${msg?.displayName}`}
   alt="avatar"
-  className="w-10 h-10 rounded-full"
-  onError={(e)=>{
-    e.target.src=`https://ui-avatars.com/api/?name=${user.displayName}`
-  }}
+  className="w-10 h-10 rounded-full object-cover"
+  referrerPolicy="no-referrer"
 />
             )}
 

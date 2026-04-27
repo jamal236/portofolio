@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
   const timer = setTimeout(() => {
     setStartAnim(true)
-  }, 5500)
+  }, 4000)
 
   return () => clearTimeout(timer)
 }, [])
@@ -98,19 +98,8 @@ function App() {
   
           <motion.div
   initial={{ opacity: 0, x: 80 }}
-    animate={
-    startAnim
-      ? { opacity: 1, x: 0, y: [0, -10, 0] }
-      : {}
-  }
-  transition={{
-    duration: 1.2,
-    y: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  }}
+animate={startAnim ? { opacity: 1, x: 0 } : {}}
+transition={{ duration: 1.2 }}
 >
             <div className="flex items-center gap-3 mb-6 bg bg-zinc-800 w-fit p-4 rounded-2xl">
               <img src="./assets/faris1.png" className="w-10 rounded-md" />
@@ -192,7 +181,7 @@ function App() {
                 <BlurText
                   text="I’m Jamalul Husnil Mubaraq,
 I'm an Informatics Engineering student specializing in front-end development. I'm focused on creating engaging digital experiences and always strive to deliver the best solutions in every project I work on."
-                  delay={130}
+                  delay={50}
                   animateBy="words"
                   direction="top"
                   className="text-base md:text-lg leading-relaxed mb-10 text-gray-300"
@@ -237,35 +226,81 @@ I'm an Informatics Engineering student specializing in front-end development. I'
 
         </div>
         <div className="tools mt-32">
-          <h1 className="text-4xl/snug font-bold mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" >Tools & Technologies</h1>
-          <p className="w-2/5 text-base/loose opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">My Profesional Skills</p>
-          <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
 
-            {listTools.map((tool) => (
-              <div
-                key={tool.id} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={tool.dad} data-aos-once="true"
-                className="flex items-center gap-4 p-4 border border-zinc-700 rounded-xl bg-zinc-900/60 backdrop-blur-md hover:bg-zinc-800/80 transition-all duration-300 group shadow-lg"
-              >
-                <img
-                  src={tool.gambar}
-                  alt="Tools Image"
-                  className="w-16 h-16 object-contain bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-900 transition-all duration-300"
-                />
-                <div className="flex flex-col overflow-hidden">
-                  <div className="truncate">
-                    <ShinyText
-                      text={tool.nama}
-                      disabled={false}
-                      speed={3}
-                      className="text-lg font-semibold block"
-                    />
-                  </div>
-                  <p className="text-sm text-zinc-400 truncate">{tool.ket}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+<h1 className="text-5xl font-bold mb-4">
+Tech Stack & Creative Toolkit
+</h1>
+
+<p className="text-zinc-400 mb-12 max-w-2xl">
+Technologies I use to build web applications,
+IoT systems and AI-powered solutions.
+</p>
+
+
+<div className="tools-box grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6">
+
+{listTools.map((tool)=>(
+
+<div
+key={tool.id}
+data-aos="fade-up"
+data-aos-delay={tool.dad}
+className={`
+rounded-3xl
+border border-white/10
+bg-white/5
+backdrop-blur-xl
+p-6
+transition duration-500
+hover:-translate-y-3
+hover:shadow-[0_0_35px_rgba(168,85,247,.35)]
+${tool.featured ? "lg:col-span-2" : ""}
+`}
+>
+
+<div className="flex items-center gap-4 mb-5">
+<img
+src={tool.gambar}
+alt={tool.nama}
+className="w-14 h-14 object-contain"
+/>
+
+<div>
+<h3 className="text-xl font-bold">
+{tool.nama}
+</h3>
+
+<p className="text-zinc-400 text-sm">
+{tool.ket}
+</p>
+</div>
+</div>
+
+
+<div className="flex justify-between text-sm mb-2">
+<span className="text-zinc-400">
+Proficiency
+</span>
+
+<span>
+{tool.level}%
+</span>
+</div>
+
+
+<div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+<div
+className="h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"
+style={{width:`${tool.level}%`}}
+></div>
+</div>
+
+</div>
+
+))}
+
+</div>
+</div>
         {/* tentang */}
 
         {/* Certificates */}
