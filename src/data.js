@@ -1,4 +1,4 @@
-import HeroImage from "/assets/hero-img.webp";
+const HeroImage = "/portofolio/assets/hero-img.webp";
 
 const Image = {
   HeroImage,
@@ -6,25 +6,25 @@ const Image = {
 
 export default Image;
 
-import Tools1 from "/assets/tools/vscode.png";
-import Tools2 from "/assets/tools/reactjs.png";
-import Tools3 from "/assets/tools/nextjs.png";
-import Tools4 from "/assets/tools/tailwind.png";
-import Tools5 from "/assets/tools/bootstrap.png";
-import Tools6 from "/assets/tools/js.png";
-import Tools7 from "/assets/tools/nodejs.png";
-import Tools8 from "/assets/tools/github.png";
-import Tools9 from "/assets/tools/ai.png";
-import Tools10 from "/assets/tools/canva.png";
-import Tools11 from "/assets/tools/figma.png";
-import Tools12 from "/assets/tools/kotlin.png";
-import Tools13 from "/assets/tools/firebase.png";
-import Tools14 from "/assets/tools/html.png";
-import Tools15 from "/assets/tools/css.png";
-import Tools16 from "/assets/tools/ts.png";
-import Tools17 from "/assets/tools/php.png";
-import Tools18 from "/assets/tools/vite.png";
-import Tools19 from "/assets/tools/mysql.png";
+const Tools1 = "/portofolio/assets/tools/vscode.png";
+const Tools2 = "/portofolio/assets/tools/reactjs.png";
+const Tools3 = "/portofolio/assets/tools/nextjs.png";
+const Tools4 = "/portofolio/assets/tools/tailwind.png";
+const Tools5 = "/portofolio/assets/tools/bootstrap.png";
+const Tools6 = "/portofolio/assets/tools/js.png";
+const Tools7 = "/portofolio/assets/tools/nodejs.png";
+const Tools8 = "/portofolio/assets/tools/github.png";
+const Tools9 = "/portofolio/assets/tools/ai.png";
+const Tools10 = "/portofolio/assets/tools/canva.png";
+const Tools11 = "/portofolio/assets/tools/figma.png";
+const Tools12 = "/portofolio/assets/tools/kotlin.png";
+const Tools13 = "/portofolio/assets/tools/firebase.png";
+const Tools14 = "/portofolio/assets/tools/html.png";
+const Tools15 = "/portofolio/assets/tools/css.png";
+const Tools16 = "/portofolio/assets/tools/ts.png";
+const Tools17 = "/portofolio/assets/tools/php.png";
+const Tools18 = "/portofolio/assets/tools/vite.png";
+const Tools19 = "/portofolio/assets/tools/mysql.png";
 
 
 export const listTools = [
@@ -163,12 +163,12 @@ export const listTools = [
   },
 ];
 
-import Proyek1 from "/assets/proyek/proyek1.jpg";
-import Proyek2 from "/assets/proyek/proyek2.jpg";
-import Proyek3 from "/assets/proyek/proyek3.jpg";
-import Proyek4 from "/assets/proyek/proyek4.jpg";
-import Proyek5 from "/assets/proyek/proyek5.jpg";
-import Proyek6 from "/assets/proyek/proyek6.jpg";
+const Proyek1 = "/portofolio/assets/proyek/proyek1.jpg";
+const Proyek2 = "/portofolio/assets/proyek/proyek2.jpg";
+const Proyek3 = "/portofolio/assets/proyek/proyek3.jpg";
+const Proyek4 = "/portofolio/assets/proyek/proyek4.jpg";
+const Proyek5 = "/portofolio/assets/proyek/proyek5.jpg";
+const Proyek6 = "/portofolio/assets/proyek/proyek6.jpg";
 
 export const listProyek = [
   {
