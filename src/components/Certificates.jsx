@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const certificates = [
-  { id: 1, image: "/portofolio/assets/cert1.jpg" },
-  { id: 2, image: "/portofolio/assets/cert2.jpg" },
-  { id: 3, image: "/portofolio/assets/cert3.jpg" },
-  { id: 4, image: "/portofolio/assets/cert4.jpg" },
-  { id: 5, image: "/portofolio/assets/cert5.jpg" },
-  { id: 6, image: "/portofolio/assets/cert6.jpg" },
-  { id: 7, image: "/portofolio/assets/cert7.jpg" },
-  { id: 8, image: "/portofolio/assets/cert8.jpg" },
-  { id: 9, image: "/portofolio/assets/cert9.jpg" },
+  { id: 1, image: "/public/assets/cert1.jpg" },
+  { id: 2, image: "/public/assets/cert2.jpg" },
+  { id: 3, image: "/public/assets/cert3.jpg" },
+  { id: 4, image: "/public/assets/cert4.jpg" },
+  { id: 5, image: "/public/assets/cert5.jpg" },
+  { id: 6, image: "/public/assets/cert6.jpg" },
+  { id: 7, image: "/public/assets/cert7.jpg" },
+  { id: 8, image: "/public/assets/cert8.jpg" },
+  { id: 9, image: "/public/assets/cert9.jpg" },
 ];
 
 const Certificates = () => {
